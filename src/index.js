@@ -31,7 +31,7 @@ bodyEl.classList.add(theme.LIGHT)
 
 chexboxEl.addEventListener('change', onThemeChangeClick)
 
-if (savedTheme === 'false') {
+if (savedTheme === 'darkThemeOn') {
   bodyEl.classList.remove(theme.LIGHT);
   bodyEl.classList.add(theme.DARK);
   chexboxEl.checked = true;
@@ -41,6 +41,7 @@ function onThemeChangeClick() {
   bodyEl.classList.toggle(theme.LIGHT);
   bodyEl.classList.toggle(theme.DARK);
 
-  const isLightTheme = bodyEl.classList.contains(theme.LIGHT);
-  localStorage.setItem(STORAGE_KEY, isLightTheme);
+  const newTheme = (bodyEl.classList.contains(theme.LIGHT)? 'lightThemeOn':'darkThemeOn')
+  
+  localStorage.setItem(STORAGE_KEY, newTheme);
 }
